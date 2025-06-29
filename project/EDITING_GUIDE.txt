@@ -1,0 +1,183 @@
+PORTFOLIO EDITING GUIDE
+========================
+
+This guide will help you edit and customize your portfolio website in the future.
+
+## FILE STRUCTURE
+================
+
+src/
+├── components/
+│   ├── Header.tsx       - Navigation bar and menu
+│   ├── Hero.tsx         - Main landing section with your name and intro
+│   ├── About.tsx        - About me section with personal info
+│   ├── Skills.tsx       - Skills and expertise showcase
+│   ├── Projects.tsx     - Portfolio projects gallery
+│   ├── Contact.tsx      - Contact form and social links
+│   ├── Footer.tsx       - Footer with copyright info
+│   └── XIcon.tsx        - Custom X (Twitter) icon component
+├── App.tsx              - Main app component that combines all sections
+├── main.tsx             - App entry point
+└── index.css            - Global styles and animations
+
+## COMMON EDITS YOU CAN MAKE
+============================
+
+### 1. PERSONAL INFORMATION
+---------------------------
+File: src/components/Hero.tsx
+- Line 15-20: Change your name and title
+- Line 22-24: Update your description
+- Line 26-30: Modify the longer bio paragraph
+
+File: src/components/About.tsx
+- Line 65-75: Update age, location, and personal details
+- Line 77-95: Edit your personal story and background
+
+### 2. CONTACT INFORMATION
+--------------------------
+File: src/components/Contact.tsx
+- Line 25-35: Update social media links (GitHub, LinkedIn, X, Email)
+- Line 95-105: Change email address in contact info section
+
+File: src/components/Hero.tsx
+- Line 45-65: Update social media links in hero section
+
+### 3. SKILLS & EXPERTISE
+-------------------------
+File: src/components/Skills.tsx
+- Line 6-30: Edit skill categories and individual skills
+- Add new skills to existing categories or create new categories
+- Line 32-36: Modify colors for each category (Tailwind CSS classes)
+
+### 4. PROJECTS
+---------------
+File: src/components/Projects.tsx
+- Line 6-120: Edit existing projects or add new ones
+- Each project has:
+  * title: Project name
+  * description: Brief description
+  * tech: Array of technologies used
+  * icon: Lucide React icon component
+  * color: Tailwind gradient classes
+  * features: Array of key features
+
+To add a new project:
+```javascript
+{
+  title: 'Your Project Name',
+  description: 'Brief description of your project',
+  tech: ['React', 'TypeScript', 'etc'],
+  icon: YourIconName, // Import from lucide-react
+  color: 'from-blue-500 to-blue-600',
+  features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4']
+}
+```
+
+### 5. COLORS & STYLING
+-----------------------
+Main background color: #e5f9fd (defined in src/App.tsx line 11)
+Primary color: Blue (#2563eb and variants)
+
+To change colors:
+- Update background in src/App.tsx
+- Modify Tailwind classes throughout components
+- Common classes: bg-blue-600, text-blue-600, border-blue-600
+
+### 6. NAVIGATION
+-----------------
+File: src/components/Header.tsx
+- Line 12-18: Edit navigation menu items
+- Add new sections by adding to navItems array
+
+### 7. FAVICON (WEBSITE ICON)
+-----------------------------
+To add or change your website's favicon (the small icon that appears in browser tabs):
+
+**Method 1: Simple Favicon (Recommended)**
+1. Create or find a square image (preferably 512x512 pixels)
+2. Convert it to .ico format using online tools like:
+   - https://favicon.io/favicon-converter/
+   - https://www.favicon-generator.org/
+3. Name the file `favicon.ico`
+4. Place it in the `public/` folder (create this folder if it doesn't exist)
+5. Update `index.html` line 4:
+   ```html
+   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+   ```
+
+**Method 2: Multiple Favicon Sizes (Advanced)**
+1. Generate multiple sizes using https://favicon.io/
+2. Place all files in the `public/` folder
+3. Update `index.html` with multiple link tags:
+   ```html
+   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+   <link rel="manifest" href="/site.webmanifest">
+   ```
+
+**Current Favicon:**
+- Currently using Vite's default favicon (`/vite.svg`)
+- Located in `index.html` line 4
+
+**Tips for Good Favicons:**
+- Use simple, recognizable designs
+- Ensure it looks good at small sizes (16x16 pixels)
+- Use your initials, logo, or a symbol representing you
+- Keep it consistent with your brand colors
+- Test how it looks in different browsers
+
+## ADDING NEW SECTIONS
+=====================
+
+1. Create new component file in src/components/
+2. Import and add to src/App.tsx
+3. Add navigation link in src/components/Header.tsx
+4. Follow existing component structure for consistency
+
+## ICONS
+========
+All icons come from lucide-react package
+- Import: import { IconName } from 'lucide-react';
+- Usage: <IconName size={24} />
+- Browse available icons: https://lucide.dev/icons/
+
+## DEPLOYMENT
+=============
+- Run `npm run build` to create production build
+- Deploy the `dist` folder to your hosting service
+- Popular options: Netlify, Vercel, GitHub Pages
+
+## DEVELOPMENT
+==============
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+
+## TIPS
+=======
+1. Always test changes locally with `npm run dev`
+2. Keep consistent styling with existing components
+3. Use Tailwind CSS classes for styling
+4. Maintain responsive design (test on mobile)
+5. Update meta tags in index.html for SEO
+6. Keep file sizes reasonable for fast loading
+
+## COMMON TAILWIND CLASSES
+==========================
+- Spacing: p-4, m-4, px-6, py-8, mb-4, mt-8
+- Colors: text-blue-600, bg-white, border-gray-200
+- Layout: flex, grid, items-center, justify-center
+- Responsive: md:text-lg, lg:grid-cols-3
+- Effects: hover:scale-105, transition-all, shadow-lg
+
+## TROUBLESHOOTING
+==================
+- If site doesn't load: Check console for errors
+- If styles look wrong: Clear browser cache
+- If icons don't show: Check lucide-react imports
+- If responsive issues: Test with browser dev tools
+- If favicon doesn't show: Clear browser cache and check file path
+
+Remember: Always backup your changes and test thoroughly before deploying!
